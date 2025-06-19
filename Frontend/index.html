@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ElephanTalk Chat</title>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/javascript">
+  const { useState, useEffect } = React;
+
+  function Chat() {
+    const [messages, setMessages] = useState([]);
+    const [text, setText] = useState('');
+    const socket = React.useMemo(() => io('/', { auth: { token: 'user1' } }), []);
+
+    useEffect(() => {
+      socket.on('chat message', (msg) => {
+        setMessages((m) => [...m, msg]);
+      });
+      socket.on('chat rejected', reason => alert('Mensaje rechazado: ' + reason));
+    }, [socket]);
+
+    const send = (e) => {
+      e.preventDefault();
+      if (text) {
+        socket.emit('chat message', text);
+        setText('');
+      }
+    };
+
+    return (
+      React.createElement('div', null,
+        React.createElement('ul', null,
+          messages.map((m, idx) =>
+            React.createElement('li', { key: idx }, `${m.user}: ${m.text}`)
+          )
+        ),
+        React.createElement('form', { onSubmit: send },
+          React.createElement('input', {
+            value: text,
+            onChange: e => setText(e.target.value)
+          }),
+          React.createElement('button', { type: 'submit' }, 'Enviar')
+        )
+      )
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Chat));
+</script>
+</body>
+</html>

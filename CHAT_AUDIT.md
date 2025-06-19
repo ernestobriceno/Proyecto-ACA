@@ -1,13 +1,15 @@
 # Chat Integration Audit
 
-This document verifies the correct integration of the group chat example under `chat/`.
+This document verifies the integration of the group chat across the backend, frontend and moderation services.
 
 ## Installation
-- `npm install` succeeds without errors.
-- `npm start` runs the server which serves the HTML page on port 3000.
+- `npm install` executed in `Backend/` without errors.
+- `pip install -r requirements.txt` executed in `Moderation/` without errors.
+- `npm start` runs the backend server on port 3000 and serves the React chat interface.
 
 ## Testing
-- Accessing `http://localhost:3000` returns the chat HTML page.
-- `npm test` fails as expected because no tests are specified.
+- Accessing `http://localhost:3000` displays the chat UI and messages broadcast in real time.
+- Messages containing banned words are rejected by the moderation service.
+- `npm test` still fails as no tests are specified.
 
 No additional issues were detected.

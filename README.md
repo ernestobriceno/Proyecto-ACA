@@ -16,7 +16,7 @@
 - [Compatibilidad de licencias](#compatibilidad-de-licencias)
 - [Tipos de error](#tipos-de-error)
 - [Tablero](#tablero)
-- [Chat Grupal](#chat-grupal)
+- [Chat Integrado](#chat-integrado)
 
 ## Repositorios
 [![Frontend](https://badgen.net/badge/Frontend/ElephanTalk%20Principal%20App/blue?icon=https://codeberg.org/Codeberg/Design/raw/branch/main/logo/icon/svg/codeberg-logo_icon_blue.svg)](https://codeberg.org/kevocodes/ElephanTalk-Frontend)
@@ -344,12 +344,32 @@ Enlace a Taiga: [Tablero de Taiga](https://tree.taiga.io/project/kevocodes-eleph
 
 
 
-## Chat Grupal
+## Chat Integrado
 
-Esta carpeta incluye un ejemplo básico de chat grupal usando **Node.js**, **Express** y **Socket.IO**. Para probarlo localmente:
+El chat grupal forma parte integral de ElephanTalk y se compone de tres servicios:
 
-1. Navega al directorio `chat` y ejecuta `npm install` para instalar las dependencias.
-2. Inicia el servidor con `npm start`.
-3. Abre `http://localhost:3000` en varios navegadores para intercambiar mensajes en tiempo real.
+1. **Backend** (`Backend/`): servidor Express con soporte para Socket.IO. Publica la aplicación de React y reenvía cada mensaje al servicio de moderación antes de emitirlo a los usuarios conectados.
+2. **Moderation** (`Moderation/`): servicio FastAPI que analiza los mensajes y bloquea aquellos que contienen palabras prohibidas.
+3. **Frontend** (`Frontend/`): interfaz React ligera que se conecta al backend mediante Socket.IO.
 
-El código fuente se encuentra en [`chat/server.js`](chat/server.js) y la interfaz mínima en [`chat/public/index.html`](chat/public/index.html).
+### Ejecución local
+
+1. Instala las dependencias del backend y arranca el servidor:
+
+```bash
+cd Backend
+npm install
+npm start
+```
+
+2. En otra terminal, instala las dependencias del servicio de moderación y ejecútalo:
+
+```bash
+cd Moderation
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+3. Abre `http://localhost:3000` en tu navegador. Inicia sesión (se usa un token simple de demostración) y comparte mensajes en tiempo real.
+
+Cada mensaje se envía primero al servicio de moderación; si es aceptado, se difunde a todos los participantes del chat.
