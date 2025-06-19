@@ -12,5 +12,8 @@ This document verifies the integration of the group chat across the backend, fro
 - Messages containing banned words are rejected by the moderation service.
 - `npm test` (Backend) and `pytest` (Moderation) run successfully.
 
-## Notes
+## Legacy Cleanup
+- Verified no references to the old `chat/` folder using `grep -ri "chat/" .`.
+- No Node.js processes were using `chat/server.js` (`ps aux | grep node` returned nothing).
+- Only the integrated React chat served from `Backend/` remains.
 No additional issues were detected.
