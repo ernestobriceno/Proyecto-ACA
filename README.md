@@ -16,6 +16,7 @@
 - [Compatibilidad de licencias](#compatibilidad-de-licencias)
 - [Tipos de error](#tipos-de-error)
 - [Tablero](#tablero)
+- [Chat Integrado](#chat-integrado)
 
 
 ## Repositorios
