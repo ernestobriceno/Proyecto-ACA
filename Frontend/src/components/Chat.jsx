@@ -23,7 +23,7 @@ export default function Chat({ token }) {
 
   return (
     <div className="chat">
-      <ul className="messages">
+      <ul className="messages" aria-live="polite">
         {messages.map((m) => (
           <li key={m.id}><strong>{m.user}:</strong> {m.text}</li>
         ))}
