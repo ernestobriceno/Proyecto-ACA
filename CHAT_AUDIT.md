@@ -12,4 +12,5 @@ This document verifies the integration of the group chat across the backend, fro
 - Messages containing banned words are rejected by the moderation service.
 - `npm test` (Backend) and `pytest` (Moderation) run successfully.
 
+## Notes
 No additional issues were detected.

@@ -25,7 +25,7 @@ export default function Chat({ token }) {
     <div className="chat">
       <ul className="messages" aria-live="polite">
         {messages.map((m) => (
-          <li key={m.id}><strong>{m.user}:</strong> {m.text}</li>
+          <li key={m.id ?? m.text}><strong>{m.user}:</strong> {m.text}</li>
         ))}
       </ul>
       <form onSubmit={send} className="input-form">
