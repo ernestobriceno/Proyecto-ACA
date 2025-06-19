@@ -24,8 +24,8 @@ export default function Chat({ token }) {
   return (
     <div className="chat">
       <ul className="messages">
-        {messages.map((m, idx) => (
-          <li key={idx}><strong>{m.user}:</strong> {m.text}</li>
+        {messages.map((m) => (
+          <li key={m.id}><strong>{m.user}:</strong> {m.text}</li>
         ))}
       </ul>
       <form onSubmit={send} className="input-form">
