@@ -16,7 +16,7 @@
 - [Compatibilidad de licencias](#compatibilidad-de-licencias)
 - [Tipos de error](#tipos-de-error)
 - [Tablero](#tablero)
-- [Chat Grupal](#chat-grupal)
+
 
 ## Repositorios
 [![Frontend](https://badgen.net/badge/Frontend/ElephanTalk%20Principal%20App/blue?icon=https://codeberg.org/Codeberg/Design/raw/branch/main/logo/icon/svg/codeberg-logo_icon_blue.svg)](https://codeberg.org/kevocodes/ElephanTalk-Frontend)
@@ -344,12 +344,3 @@ Enlace a Taiga: [Tablero de Taiga](https://tree.taiga.io/project/kevocodes-eleph
 
 
 
-## Chat Grupal
-
-Esta carpeta incluye un ejemplo básico de chat grupal usando **Node.js**, **Express** y **Socket.IO**. Para probarlo localmente:
-
-1. Navega al directorio `chat` y ejecuta `npm install` para instalar las dependencias.
-2. Inicia el servidor con `npm start`.
-3. Abre `http://localhost:3000` en varios navegadores para intercambiar mensajes en tiempo real.
-
-El código fuente se encuentra en [`chat/server.js`](chat/server.js) y la interfaz mínima en [`chat/public/index.html`](chat/public/index.html).
